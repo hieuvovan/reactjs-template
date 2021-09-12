@@ -1,0 +1,46 @@
+.footer {
+  color: map-get($color, secondary);
+ 
+  &-main {
+    @include pxRem(padding-bottom, 50);
+    background-color: map-get($color, gray-light);
+  }
+
+  &-content {
+    @include pxRem(max-width, 700);
+  }
+
+  &-bottom {
+    @include pxRem(padding, 15 0);
+    @include pxRem(border-top, 1 solid map-get($color, secondary));
+    background-color: map-get($color, gray-light);
+  }
+
+  .page-logo {
+    @include pxRem(width, 250);
+    @include pxRem(padding, 30 0);
+    .logo {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .footer {
+    &-content {
+      @include pxRem(max-width, 700);
+      font-size: map-get($font-size, base);
+    }
+  
+    .copyright {
+      font-size: map-get($font-size, sm);
+    }
+
+    .page-logo {
+      .logo {
+        width: 50%;
+      }
+    }
+  }
+  
+}

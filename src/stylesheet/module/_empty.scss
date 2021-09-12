@@ -1,0 +1,32 @@
+.empty {
+  @include pxRem(margin, 36 auto);
+
+  &-img {
+    width: 50%;
+  }
+
+  &-label {
+    @include pxRem(font-size, 18);
+    font-weight: 500;
+    color: map-get($color, forest);
+  }
+
+  &-content {
+    @include pxRem(margin-top, 16);
+    font-size: map-get($font-size, sm);
+    color: map-get($color, text-light);
+  }
+}
+
+@media only screen and (max-width: map-get($grid-breakpoints, sm )) {
+  .empty {
+    &-label {
+      font-size: map-get($font-size, base);
+    }
+
+    &-content {
+      @include pxRem(margin-top, 4);
+      font-size: map-get($font-size, xs);
+    }
+  }
+}

@@ -1,0 +1,71 @@
+.container {
+  @include pxRem(max-width, 1200);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -#{$col-padding};
+}
+
+.row.no-gutters { 
+  margin: 0;
+}
+
+.col {
+  padding: 0 $col-padding;
+}
+
+.row.no-gutters .col {
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    width: percentage($i/$grid-columns);
+    padding: 0 #{$col-padding};
+  }
+}
+
+@media only screen and (max-width: map-get($grid-breakpoints, sm )) {
+  .sm-hidden {
+    display: none !important;
+  }
+
+  .sm-show {
+    display: block;
+  }
+
+  .container {
+    @include pxRem(max-width, 327);
+    width: 100%;
+  }
+
+  .row {
+    margin: 0 -#{$col-padding-sm};
+  }
+
+  
+ @for $i from 1 through $grid-columns {
+   .col-sm-#{$i} {
+    width: percentage($i/$grid-columns);
+    padding: 0 $col-padding-sm;
+   }
+ }
+}
+
+.f-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.f-column {
+  display: flex;
+  flex-direction: column;
+}

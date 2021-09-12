@@ -1,0 +1,176 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: map-get($color, white);
+  z-index: 100000;
+  @include pxRem(border-bottom, 1 solid map-get($color, border-light));
+
+  .recommend {
+    display: none;
+  }
+
+  &-wrap {
+    @extend %flex-center;
+    justify-content: space-between;
+  }
+
+  &-left {
+    line-height: 0;
+  }
+
+  &-img {
+    @include pxRem(height, 80);
+  }
+
+  &-list {
+    @extend %flex-center;
+    justify-content: space-between;
+    z-index: 999;
+  }
+
+  &-item {
+    @extend %flex-center;
+    @include pxRem(margin, 0 8);
+  }
+
+  &-item.menu {
+    position: relative;
+  }
+
+  &-link,
+  &-user {
+    @include pxRem(margin, 0 8);
+    @include pxRem($font-size, map-get($font-size, base));
+    color: map-get($color, secondary);
+    font-weight: map-get($font-weight, bold);
+  }
+
+  &-link:hover,
+  &-user:hover {
+    color: map-get($color, primary);
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .avatar {
+    @include pxRem(width, 30);
+    @include pxRem(height, 30);
+    border-radius: 50%;
+    object-fit: cover;
+  } 
+
+  &-item.menu:hover .menu-list {
+    display: block;
+  }
+
+  .menu {
+
+    &::after {
+      @include pxRem(height, 70);
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &-list {
+      @include pxRem(min-width, 200);
+      @include pxRem(box-shadow, 0 2 4 map-get($color, border-light));
+      @include pxRem(border-bottom, none);
+      position: absolute;
+      top: 180%;
+      left: 0;
+      background-color: map-get($color, white);
+      display: none;
+    }
+  
+    &-item {
+      @include pxRem(padding, 10 24);
+      @include pxRem(border-bottom, 1 solid map-get($color, border-light));
+      font-size: map-get($font-size, base);
+      cursor: pointer;
+    }
+
+    &-item:hover {
+      background-color: map-get($color, border-light);
+    }
+
+    .icon {
+      color: map-get($color, text-light);
+    }
+  
+    &-link {
+      @include pxRem(margin-left, 8);
+      color: map-get($color, text-light);
+    }
+  }
+}
+
+.header-margin {
+  @include pxRem(margin-top, 80);
+}
+
+@media only screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .header {
+    &-img {
+      @include pxRem(height, 50);
+    }
+
+    &-list.logged-in {
+      position: absolute;
+      top: 100%;
+      right:0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: map-get($color, white);
+      display: none;
+
+      .header-item {
+        @include pxRem(padding, 8 0);
+        @include pxRem(border-bottom, 1 solid map-get($color, border-light));
+        width: 100%;
+        padding-left: calc((100% - 327px)/2);
+        display: flex;
+        justify-content: left;
+      }
+    }
+
+    .menu-icon,
+    .user-icon {
+      display: block;
+    }
+
+    .menu-input:checked ~ .header-list.logged-in {
+      display: flex;
+    }
+    
+    .menu {
+      &-list {
+        @include pxRem(width, 200);
+        @include pxRem(border-top, 1 solid map-get($color, border-light));
+        top: 147%;
+        right: 0;
+        left: unset;
+        box-shadow: none;
+      }
+
+      &-item {
+        @include pxRem(padding, 8 30);
+      }
+    }
+  }
+
+  .header-margin {
+    @include pxRem(margin-top, 50);
+  }
+}
+

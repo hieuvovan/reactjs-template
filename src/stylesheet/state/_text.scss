@@ -1,0 +1,54 @@
+.txt-center {
+  text-align: center
+}
+
+.txt-bold {
+  font-weight: map-get($font-weight, bold);
+}
+
+.txt-uppercase {
+  text-transform: uppercase;
+}
+
+.txt-italic {
+  font-style: italic;
+}
+
+@for $i from 1 through $grid-columns {
+  .txt-error-#{$i} {
+    @include pxRem(padding, 10);
+    @include pxRem(font-size, map-get($font-size, sm));
+    color: map-get($color, red);
+    margin-left: percentage(($grid-columns - $i) / $grid-columns);
+  }
+}
+
+.txt-error {
+  @include pxRem(padding, 10);
+  @include pxRem(font-size, map-get($font-size, sm));
+  color: map-get($color, red);
+}
+
+.txt-success {
+  @include pxRem(font-size, map-get($font-size, sm));
+  color: map-get($color, success);
+  font-weight: 500;
+}
+
+@media only screen and (max-width: map-get($grid-breakpoints, sm )) {
+  @for $i from 1 through $grid-columns {
+    .txt-error-sm-#{$i} {
+      @include pxRem(padding, 4);
+      @include pxRem(font-size, map-get($font-size, sm));
+      color: map-get($color, red);
+      margin-left: percentage(($grid-columns - $i) / $grid-columns);
+    }
+  }
+
+  .txt-error-sm {
+    @include pxRem(margin-left, 0);
+    @include pxRem(padding, 4);
+    @include pxRem(font-size, map-get($font-size, sm));
+    color: map-get($color, red);
+  }
+}

@@ -1,0 +1,20 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  @include pxRem(font-size, map-get($font-size, base-text-size));
+  font-family: $base-font-family;
+  font-weight: map-get($font-weight, weight-primary);
+  line-height: $text-line-height;
+  color: map-get($color, base-text-color);
+  overflow-x: hidden;
+}
+
+image {
+  max-width: 100%;
+  width: 100%;
+}
